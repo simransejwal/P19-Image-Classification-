@@ -6,7 +6,7 @@ from tqdm import tqdm
 import random
 import pickle
 
-DATADIR = "X:/Datasets/PetImages"
+DATADIR = '/Users/simransejwal/Desktop/Test'
 
 CATEGORIES = ['Aardwolf','African Crake','Agile Wallaby','Baboon','Badger','Bald Eagle','Baleen Whale','Bat','Bear','Beaver','Bengal Vulture','Black Swan','Black Tailed Deer','Black Vulture','Blue Fox','Bonnet Macaque','California Sea Lion','Camel','Canada Gooose','Cape Clawless Otter,'Cape Fox','Cape Raven','Capybara','Caribou','Camine Bee Eater','Cat,'Cheetah','Chestnut Weaver','Chipmunk','Cliffchat','Coatimundi','Cobra','Comb Dunk','Crane','Crow','Coyote','Dabchick','Dama Wallaby','Dassie','Deer','Dingo','Dog','Eagle','Easter Box Turtle','Elephant','Elk','Emu','Euro Wallaby','Falcon','Fat Tailed Dunnant','Dolphin','Flamingo','Flicker','Four Spotted Skimmer','Galah','Goat','Gaur','Gazelle','Giraffe','Goose','Gorilla','Green Heron','Green Vine Snake','Gull','Harbor Seal','Hawk','Hippopotamus']
 
