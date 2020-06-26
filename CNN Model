@@ -16,17 +16,17 @@ import time
 
 #DATADIR = '/Users/simransejwal/Desktop/Test'
 
-#CATEGORIES = ['Aardwolf','African Crake','Baboon','Coyote']
+#CATEGORIES = ['Aardwolf','African Crake','Agile Wallaby','Baboon','Badger','Bald Eagle','Baleen Whale','Bat','Bear','Beaver','Bengal Vulture','Black Swan','Black Tailed Deer','Black Vulture','Blue Fox','Bonnet Macaque','California Sea Lion','Camel','Canada Gooose','Cape Clawless Otter,'Cape Fox','Cape Raven','Capybara','Caribou','Camine Bee Eater','Cat,'Cheetah','Chestnut Weaver','Chipmunk','Cliffchat','Coatimundi','Cobra','Comb Dunk','Crane','Crow','Coyote','Dabchick','Dama Wallaby','Dassie','Deer','Dingo','Dog','Eagle','Easter Box Turtle','Elephant','Elk','Emu','Euro Wallaby','Falcon','Fat Tailed Dunnant','Dolphin','Flamingo','Flicker','Four Spotted Skimmer','Galah','Goat','Gaur','Gazelle','Giraffe','Goose','Gorilla','Green Heron','Green Vine Snake','Gull','Harbor Seal','Hawk','Hippopotamus']
 
-#for category in CATEGORIES:  # do dogs and cats
-    #path = os.path.join(DATADIR,category)  # create path to dogs and cats
-    #for img in os.listdir(path):  # iterate over each image per dogs and cats
-     #   img_array = cv2.imread(os.path.join(path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
-    #    plt.imshow(img_array, cmap='gray')  # graph it
-   #     plt.show()  # display!
+#for category in CATEGORIES:  
+    #path = os.path.join(DATADIR,category)  
+    #for img in os.listdir(path):  
+     #   img_array = cv2.imread(os.path.join(path,img) ,cv2.IMREAD_GRAYSCALE) 
+    #    plt.imshow(img_array, cmap='gray')  
+   #     plt.show()  
 
-  #      break  # we just want one for now so break
- #   break  #...and one more!
+  #      break  
+ #   break 
 
 #IMG_SIZE = 100
 
@@ -37,17 +37,17 @@ import time
 training_data = []
 
 #def create_training_data():
-    #for category in CATEGORIES:  # do dogs and cats
+    #for category in CATEGORIES:  
 
-        #path = os.path.join(DATADIR,category)  # create path to dogs and cats
-        #class_num = CATEGORIES.index(category)  # get the classification  (0 or a 1). 0=dog 1=cat
+        #path = os.path.join(DATADIR,category) 
+        #class_num = CATEGORIES.index(category)  
 
-       # for img in tqdm(os.listdir(path)):  # iterate over each image per dogs and cats
+       # for img in tqdm(os.listdir(path)):  
       #      try:
-     #           img_array = cv2.imread(os.path.join(path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
-    #            new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
-   #             training_data.append([new_array, class_num])  # add this to our training_data
-  #          except Exception as e:  # in the interest in keeping the output clean...
+     #           img_array = cv2.imread(os.path.join(path,img) ,cv2.IMREAD_GRAYSCALE)  
+    #            new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  
+   #             training_data.append([new_array, class_num])  
+  #          except Exception as e:  
  #              pass
             #except OSError as e:
             #    print("OSErrroBad img most likely", e, os.path.join(path,img))
@@ -135,7 +135,7 @@ for dense_layer in dense_layers:
 model.save('Simran.model')
 
 
-CATEGORIES = ['Aardwolf','African Crake','Baboon','Coyote']
+CATEGORIES = ['Aardwolf','African Crake','Agile Wallaby','Baboon','Badger','Bald Eagle','Baleen Whale','Bat','Bear','Beaver','Bengal Vulture','Black Swan','Black Tailed Deer','Black Vulture','Blue Fox','Bonnet Macaque','California Sea Lion','Camel','Canada Gooose','Cape Clawless Otter,'Cape Fox','Cape Raven','Capybara','Caribou','Camine Bee Eater','Cat,'Cheetah','Chestnut Weaver','Chipmunk','Cliffchat','Coatimundi','Cobra','Comb Dunk','Crane','Crow','Coyote','Dabchick','Dama Wallaby','Dassie','Deer','Dingo','Dog','Eagle','Easter Box Turtle','Elephant','Elk','Emu','Euro Wallaby','Falcon','Fat Tailed Dunnant','Dolphin','Flamingo','Flicker','Four Spotted Skimmer','Galah','Goat','Gaur','Gazelle','Giraffe','Goose','Gorilla','Green Heron','Green Vine Snake','Gull','Harbor Seal','Hawk','Hippopotamus']
 def prepare(filepath):
     IMG_SIZE = 70  # 50 in txt-based
     img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
@@ -145,5 +145,5 @@ def prepare(filepath):
 
 model = tf.keras.models.load_model("Simran.model")
 prediction = model.predict([prepare('Hyena-3-300x194.jpg')])
-print(prediction)  # will be a list in a list.
+print(prediction)  
 print(CATEGORIES[int(prediction[0][0])])
