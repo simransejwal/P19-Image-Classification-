@@ -1,0 +1,70 @@
+import os 
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import pickle
+import random
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+
+dir = '/Users/simransejwal/Desktop/Test'
+
+categories = ['Aardwolf','African Crake','Agile Wallaby','Baboon','Badger','Bald Eagle','Baleen Whale','Bat','Bear','Beaver','Bengal Vulture','Black Swan','Black Tailed Deer','Black Vulture','Blue Fox','Bonnet Macaque','California Sea Lion','Camel','Canada Gooose','Cape Clawless Otter,'Cape Fox','Cape Raven','Capybara','Caribou','Camine Bee Eater','Cat,'Cheetah','Chestnut Weaver','Chipmunk','Cliffchat','Coatimundi','Cobra','Comb Dunk','Crane','Crow','Coyote','Dabchick','Dama Wallaby','Dassie','Deer','Dingo','Dog','Eagle','Easter Box Turtle','Elephant','Elk','Emu','Euro Wallaby','Falcon','Fat Tailed Dunnant','Dolphin','Flamingo','Flicker','Four Spotted Skimmer','Galah','Goat','Gaur','Gazelle','Giraffe','Goose','Gorilla','Green Heron','Green Vine Snake','Gull','Harbor Seal','Hawk','Hippopotamus']
+
+data =[]
+
+for category in categories:
+	path = os.path.join(dir,category)
+	label = categories.index(category)
+
+	for img in os.listdir(path):
+		imgpath = os.path.join(path,img)
+		animal_img = cv2.imread(imgpath,0)
+		try:
+		   animal_img = cv2.resize(animal_img,(50,50))
+		   image = np.array(animal_img).flatten()
+
+		   data.append([image,label])
+		except Exception as e:
+		  pass   
+
+
+
+pick_in = open('data1.pickle','wb')
+pickle.dump(data,pick_in)
+pick_in.close()
+
+
+xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size= .04)
+
+model = SVC(C=1, kernel='poly', gamma='auto')
+model.fit(xtrain, ytrain)
+
+pick_in = open('data1.pickle','rb')
+data = pickle.load(pick_in)
+pick_in.close()
+
+random.shuffle(data)
+features = []
+labels =[]
+
+for feature ,label in data:
+	features.append(feature)
+	labels.append(label)
+
+xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size= .025)
+
+
+model = SVC(C=1, kernel='poly', gamma='auto')
+model.fit(xtrain, ytrain)
+
+prediction=model.predict(xtest)
+accuracy = model.score(xtest,ytest)
+
+categories = ['Aardwolf','African Crake','Baboon','Coyote',' ']
+print('Accuracy', accuracy)
+print('Prediction is:', categories[prediction[0]])
+
+myanimal = xtest[0].reshape(50,50)
+plt.imshow(myanimal,cmap='gray')
+plt.show()
