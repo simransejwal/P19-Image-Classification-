@@ -12,3 +12,5 @@ def prepare(filepath):
 
 model = tf.keras.models.load_model("SimranCNN.model")
 prediction = model.predict([prepare('Rusty.jpg')])
+print(prediction)  
+print(CATEGORIES[int(prediction[0][0])])
