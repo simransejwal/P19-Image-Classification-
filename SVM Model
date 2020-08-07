@@ -35,7 +35,7 @@ pickle.dump(data,pick_in)
 pick_in.close()
 
 
-xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size= .04)
+xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size=0.40)
 
 model = SVC(C=1, kernel='poly', gamma='auto')
 model.fit(xtrain, ytrain)
@@ -52,7 +52,7 @@ for feature ,label in data:
 	features.append(feature)
 	labels.append(label)
 
-xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size= .04)
+xtrain, xtest, ytrain, ytest = train_test_split(features,labels,test_size=.40)
 
 
 model = SVC(C=1, kernel='poly', gamma='auto')
@@ -61,7 +61,7 @@ model.fit(xtrain, ytrain)
 prediction=model.predict(xtest)
 accuracy = model.score(xtest,ytest)
 
-categories = ['Aardwolf','African Crake','Baboon','Coyote',' ']
+categories = ['Aardwolf','African Crake','Agile Wallaby','Baboon','Badger','Bald Eagle','Baleen Whale','Bat','Bear','Beaver','Bengal Vulture','Black Swan','Black Tailed Deer','Black Vulture','Blue Fox','Bonnet Macaque','California Sea Lion','Camel','Canada Gooose','Cape Clawless Otter,'Cape Fox','Cape Raven','Capybara','Caribou','Camine Bee Eater','Cat,'Cheetah','Chestnut Weaver','Chipmunk','Cliffchat','Coatimundi','Cobra','Comb Dunk','Crane','Crow','Coyote','Dabchick','Dama Wallaby','Dassie','Deer','Dingo','Dog','Eagle','Easter Box Turtle','Elephant','Elk','Emu','Euro Wallaby','Falcon','Fat Tailed Dunnant','Dolphin','Flamingo','Flicker','Four Spotted Skimmer','Galah','Goat','Gaur','Gazelle','Giraffe','Goose','Gorilla','Green Heron','Green Vine Snake','Gull','Harbor Seal','Hawk','Hippopotamus']
 print('Accuracy', accuracy)
 print('Prediction is:', categories[prediction[0]])
 
